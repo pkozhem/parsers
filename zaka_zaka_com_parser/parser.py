@@ -45,7 +45,8 @@ def get_games_list_json(pages_amount):
 
 
 def main():
-    get_games_list_json(2)
+    pages_amount = int(input("Input amount of pages to parser in range [1..15]: "))
+    get_games_list_json(pages_amount)
 
     if os.path.exists("data"):
         shutil.rmtree("data")
