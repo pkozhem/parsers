@@ -5,6 +5,7 @@ This repository contains some parsers for next sites:<br>
 2) <a href="http://memorialroyal.by">memorialroyal.by</a>
 3) <a href="https://zaka-zaka.com">zaka-zaka.com</a>
 
+And CLI for usage with single python file.
 Additional info of parser you can find in parser's code.
 
 <h3> Used technologies </h3>
