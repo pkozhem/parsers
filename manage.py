@@ -4,7 +4,16 @@
 
 import os
 import sys
+import platform
 import argparse
+
+
+def get_os():
+    if platform.system() == "Linux":
+        return "python3"
+
+    elif platform.system() == "Windows":
+        return "python"
 
 
 def add_args():
@@ -17,17 +26,18 @@ def add_args():
 
 
 def call_parser():
-    if sys.argv[1] == "health_diet":
-        os.system("python3 health_diet_ru_parser/parser.py")
+    match sys.argv[1]:
+        case "health_diet":
+            os.system(f"{get_os()} health_diet_ru_parser/parser.py")
 
-    elif sys.argv[1] == "memorial_royal":
-        os.system("python3 memorial_royal_by_parser/parser.py")
+        case "memorial_royal":
+            os.system(f"{get_os()} memorial_royal_by_parser/parser.py")
 
-    elif sys.argv[1] == "zaka_zaka":
-        os.system("python3 zaka_zaka_com_parser/parser.py")
+        case "zaka_zaka":
+            os.system(f"{get_os()} zaka_zaka_com_parser/parser.py")
 
-    else:
-        print(add_args().help)
+        case _:
+            print(add_args().help)
 
 
 def execute_from_command_line():
