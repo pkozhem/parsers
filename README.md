@@ -9,11 +9,16 @@ Additional info of parser you can find in parser's code.
 
 <h3> Used technologies </h3>
 
-1) BeautifulSoup4
-2) lxml
-3) requests
+1) Python ≥ 3.10
+2) BeautifulSoup4
+3) lxml
+4) requests
 
 <h3> Installation guide for Linux/GNU OS </h3>
+
+Note: if you are using Windows OS, do same steps but in 1st
+paragraph skip two first command and replace all "python3"
+with "python".
 
 1) Install all required solutions. Replace 'apt' with
    your distribution package manager.
@@ -45,3 +50,4 @@ Additional info of parser you can find in parser's code.
    ```commandline
    python3 manage.py zaka_zaka
    ```
+   
