@@ -19,7 +19,7 @@ def create_or_check_index_html(url, headers):
     request = requests.get(url=url, headers=headers)
     src = request.text
 
-    with open("index.html", "w") as file:
+    with open("health_diet_ru_parser/index.html", "w") as file:
         file.write(src)
 
     print("Creating index.html ...")
@@ -29,7 +29,7 @@ def create_or_check_categories_json(categories):
     if os.path.exists("categories.json"):
         return
 
-    with open("categories.json", "w") as file:
+    with open("health_diet_ru_parser/categories.json", "w") as file:
         json.dump(categories, file, indent=4, ensure_ascii=False)
 
     print("Creating categories.json ...")
@@ -43,12 +43,12 @@ def main():
     }
     create_or_check_index_html(url, headers)
 
-    with open("index.html") as file:
+    with open("health_diet_ru_parser/index.html") as file:
         src = file.read()
 
     soup = BeautifulSoup(src, "lxml")
     print("Removing index.html ...")
-    os.remove("index.html")
+    os.remove("health_diet_ru_parser/index.html")
     products_hrefs = soup.find_all("a", class_="mzr-tc-group-item-href")
 
     categories = {}
@@ -57,14 +57,14 @@ def main():
 
     create_or_check_categories_json(categories)
 
-    with open("categories.json") as file:
+    with open("health_diet_ru_parser/categories.json") as file:
         all_categories = json.load(file)
 
     count = 0
     to_replace = (",", " ", "-", "'")
 
-    if not os.path.exists("data"):
-        os.mkdir("data")
+    if not os.path.exists("health_diet_ru_parser/data"):
+        os.mkdir("health_diet_ru_parser/data")
 
     for category_name, category_href in all_categories.items():
         print(f"Iteration #{count}. Initializing {category_name} category ...\nPending {53 - count} categories.")
@@ -76,17 +76,17 @@ def main():
         request = requests.get(url=category_href, headers=headers)
         src = request.text
 
-        with open(f"data/{count}_{category_name}.html", "w") as file:
+        with open(f"health_diet_ru_parser/data/{count}_{category_name}.html", "w") as file:
             file.write(src)
 
-        with open(f"data/{count}_{category_name}.html") as file:
+        with open(f"health_diet_ru_parser/data/{count}_{category_name}.html") as file:
             src = file.read()
 
         soup = BeautifulSoup(src, "lxml")
 
         alert = soup.find(class_="uk-alert-danger")
         if alert is not None:
-            os.remove(f"data/{count}_{category_name}.html")
+            os.remove(f"health_diet_ru_parser/data/{count}_{category_name}.html")
             continue
 
         products_data = soup.find(class_="mzr-tc-group-table").find("tbody").find_all("tr")
@@ -111,11 +111,13 @@ def main():
                 }
             )
 
-        with open(f"data/{count}_{category_name}.json", "a") as file:
+        with open(f"health_diet_ru_parser/data/{count}_{category_name}.json", "a") as file:
             json.dump(products_json, file, indent=4, ensure_ascii=False)
 
-        os.remove(f"data/{count}_{category_name}.html")
+        os.remove(f"health_diet_ru_parser/data/{count}_{category_name}.html")
         count += 1
+
+    print("All data collected. Ending program ...")
 
 
 if __name__ == '__main__':

@@ -28,8 +28,8 @@ def get_page(i):
 def get_games_list_json(pages_amount):
     games_list = {}
 
-    if os.path.exists("games_list.json"):
-        os.remove("games_list.json")
+    if os.path.exists("zaka_zaka_com_parser/games_list.json"):
+        os.remove("zaka_zaka_com_parser/games_list.json")
 
     for i in range(1, pages_amount + 1):
         soup = BeautifulSoup(get_page(i), "lxml")
@@ -40,20 +40,22 @@ def get_games_list_json(pages_amount):
             game_href = item.get("href")
             games_list[game_name] = game_href
 
-            with open("games_list.json", "w") as file:
+            with open("zaka_zaka_com_parser/games_list.json", "w") as file:
                 json.dump(games_list, file, indent=4, ensure_ascii=False)
 
 
 def main():
+    print("Collecting data ...")
+
     pages_amount = int(input("Input amount of pages to parser in range [1..15]: "))
     get_games_list_json(pages_amount)
 
-    if os.path.exists("data"):
-        shutil.rmtree("data")
+    if os.path.exists("zaka_zaka_com_parser/data"):
+        shutil.rmtree("zaka_zaka_com_parser/data")
 
-    os.mkdir("data")
+    os.mkdir("zaka_zaka_com_parser/data")
 
-    with open("games_list.json") as file:
+    with open("zaka_zaka_com_parser/games_list.json") as file:
         all_games = json.load(file)
 
     count = 0
@@ -86,10 +88,12 @@ def main():
         details["Date"] = date
         details["Amount"] = amount
 
-        with open(f"data/{count}_{name}.json", "a") as file:
+        with open(f"zaka_zaka_com_parser/data/{count}_{name}.json", "a") as file:
             json.dump(details, file, indent=4, ensure_ascii=False)
 
         count += 1
+
+    print("All data collected. Ending program ...")
 
 
 if __name__ == "__main__":

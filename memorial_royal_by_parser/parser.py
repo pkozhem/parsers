@@ -22,6 +22,7 @@ def get_page():
 
 
 def main():
+    print("Collecting data ...")
     soup = BeautifulSoup(get_page(), "lxml")
     memorials = soup.find_all("div", class_="m-3 border-0")
     content = []
@@ -41,8 +42,10 @@ def main():
             }
         )
 
-        with open("memorials.json", "w") as file:
+        with open("memorial_royal_by_parser/memorials.json", "w") as file:
             json.dump(content, file, indent=4, ensure_ascii=False)
+
+    print("All data collected. Ending program ...")
 
 
 if __name__ == '__main__':
