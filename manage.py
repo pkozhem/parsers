@@ -26,18 +26,17 @@ def add_args():
 
 
 def call_parser():
-    match sys.argv[1]:
-        case "health_diet":
-            os.system(f"{get_os()} health_diet_ru_parser/parser.py")
+    if sys.argv[1] == "health_diet":
+        os.system(f"{get_os()} health_diet_ru_parser/parser.py")
 
-        case "memorial_royal":
-            os.system(f"{get_os()} memorial_royal_by_parser/parser.py")
+    elif sys.argv[1] == "memorial_royal":
+        os.system(f"{get_os()} memorial_royal_by_parser/parser.py")
 
-        case "zaka_zaka":
-            os.system(f"{get_os()} zaka_zaka_com_parser/parser.py")
+    elif sys.argv[1] == "zaka_zaka":
+        os.system(f"{get_os()} zaka_zaka_com_parser/parser.py")
 
-        case _:
-            print(add_args().help)
+    else:
+        print(add_args().help)
 
 
 def execute_from_command_line():

@@ -17,9 +17,10 @@ Additional info of parser you can find in parser's code.
 
 <h3> Installation guide for Linux/GNU OS </h3>
 
-Note: if you are using Windows OS, do same steps but in 1st
+<b>Note</b>: if you are using Windows OS, do same steps but in 1st
 paragraph skip two first command and replace all "python3"
-with "python".
+with "python". In 2nd paragraph replace second command with
+<path_to_venv>\Scripts\activate.bat
 
 1) Install all required solutions. Replace 'apt' with
    your distribution package manager.
