@@ -32,12 +32,16 @@ Additional info of parser you can find in parser's code.
    ```commandline
    pip install -r requirements.txt
    ```
-4) To use parser input following commands (in " " input parser name, for example zaka_zaka_com_parser).
+4) Use CLI to call specify parser.<br>
+   a) to parse <a href="https://health-diet.ru">health-diet.ru</a>
    ```commandline
-   cd "parser name"
-   python3 parser.py
+   python3 manage.py health_diet
    ```
-5) To exit parser.
+   b) to parse <a href="http://memorialroyal.by">memorialroyal.by</a>
    ```commandline
-   cd ..
+   python3 manage.py memorial_royal
+   ```
+   c) to parse <a href="https://zaka-zaka.com">zaka-zaka.com</a>
+   ```commandline
+   python3 manage.py zaka_zaka
    ```
