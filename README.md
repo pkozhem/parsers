@@ -4,6 +4,7 @@ This repository contains some parsers for next sites:<br>
 1) <a href="https://health-diet.ru">health-diet.ru</a>
 2) <a href="http://memorialroyal.by">memorialroyal.by</a>
 3) <a href="https://zaka-zaka.com">zaka-zaka.com</a>
+4) <a href="http://tertotyer-001-site1.ctempurl.com/">cata-shop.by</a>
 
 And CLI for usage with single python file.
 Additional info of parser you can find in parser's code.
@@ -51,5 +52,9 @@ with "python". In 2nd paragraph replace second command with
    c) to parse <a href="https://zaka-zaka.com">zaka-zaka.com</a>
    ```commandline
    python3 manage.py zaka_zaka
+   ```
+   d) to parse <a href="http://tertotyer-001-site1.ctempurl.com/">cata-shop.by</a>
+   ```commandline
+   python3 manage.py cata_shop
    ```
    

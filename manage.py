@@ -21,6 +21,7 @@ def add_args():
     parser.add_argument("health_diet", help="Calling parser for health-diet.ru.")
     parser.add_argument("memorial_royal", help="Calling parser for memorialroyal.by")
     parser.add_argument("zaka_zaka", help="Calling parser for zaka-zaka.com.")
+    parser.add_argument("cata_shop", help="Calling parser for cata-shop.by.")
     args = parser.parse_args()
     return args
 
@@ -34,6 +35,9 @@ def call_parser():
 
     elif sys.argv[1] == "zaka_zaka":
         os.system(f"{get_os()} zaka_zaka_com_parser/parser.py")
+
+    elif sys.argv[1] == "cata_shop":
+        os.system(f"{get_os()} cata_shop_by_parser/parser.py")
 
     else:
         print(add_args().help)
